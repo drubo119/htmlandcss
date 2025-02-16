@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
 </head>
+
 <body>
   <header>
     <img src="shihab2.0.webp" alt="Alex Carter">
-  
+
     <h1>Shihab</h1>
     <p>Junior Web Developer</p>
   </header>
@@ -34,7 +36,8 @@
       <h3>Intern Web Developer at WebGen Solutions</h3>
       <p>May 2022 - August 2022</p>
       <ul>
-        <li>Developed and maintained code for in-house and client websites primarily using HTML, CSS, and JavaScript.</li>
+        <li>Developed and maintained code for in-house and client websites primarily using HTML, CSS, and JavaScript.
+        </li>
         <li>Optimized existing functionalities for better scalability and performance.</li>
       </ul>
     </article>
@@ -44,7 +47,8 @@
       <ul>
         <li>Designed and developed user-friendly websites for local businesses, enhancing their online presence and
           accessibility.</li>
-        <li>Implemented responsive web design to ensure optimal viewing across multiple devices, including smartphones and
+        <li>Implemented responsive web design to ensure optimal viewing across multiple devices, including smartphones
+          and
           tablets.</li>
       </ul>
     </article>
@@ -55,73 +59,156 @@
     <p>Phone: <a href="tel:0177335544">0177335544</a></p>
   </footer>
   <style>
-   body {
-  font-family: 'Roboto', sans-serif;
-  line-height: 1.6;
-  margin: 0;
-  padding: 0;
-  color: #333;
-  background-color: #f4f4f4;
-}
+    body {
+      font-family: 'Brush Script MT', cursive;
+      line-height: 1.6;
+      margin: 0;
+      padding: 0;
+      color:#808000;
+      background-color: #f4f4f4;
+    }
 
-header {
-  background-color: #e0f0ff;
-  text-align: center;
-  padding: 20px;
-}
+    header {
+     
+      background-color: #e0f0ff;
+      text-align: center;
+      padding: 20px;
+    }
 
-header img {
-  width: 120px;
-  height: 120px;
-  border-radius: 50%;
-}
+    header img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+    }
 
-header h1 {
-  margin: 10px 0;
-  color: #333;
-}
+    header h1 {
+      margin: 10px 0;
+      color: #333;
+    }
 
-header p {
-  color: #555;
-  font-size: 18px;
-}
+    header p {
+      color: #555;
+      font-size: 18px;
+    }
 
-section {
+    section {
   background-color: #ffffff;
   padding: 20px;
   margin: 20px;
   border-radius: 8px;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 1s ease-out, transform 1s ease-out;
 }
 
-#skills ul {
-  list-style-type: none;
-  padding: 0;
+section.show {
+  opacity: 1;
+  transform: translateY(0);
 }
 
-#skills li {
+    #skills ul {
+      list-style-type: none;
+      padding: 0;
+    }
+
+   #skills li {
   background-color: #e0f7ff;
   padding: 8px;
   margin: 5px;
   display: inline-block;
   border-radius: 4px;
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 }
 
-footer {
-  background-color: #ddefff;
-  text-align: center;
-  padding: 20px;
-  font-size: 16px;
+#skills li:hover {
+  transform: scale(1.1);
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
 }
 
-footer a {
+    footer {
+      background-color: #ddefff;
+      text-align: center;
+      padding: 20px;
+      font-size: 16px;
+    }
+
+   footer a {
+  position: relative;
+  display: inline-block;
   color: #0066cc;
   text-decoration: none;
+  overflow: hidden;
+  transition: color 0.3s ease-in-out;
+}
+
+footer a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 100%;
+  height: 2px;
+  background: #0066cc;
+  transform: scaleX(0);
+  transition: transform 0.3s ease-in-out;
 }
 
 footer a:hover {
-  text-decoration: underline;
-} 
+  color: #003399;
+}
+
+footer a:hover::after {
+  transform: scaleX(1);
+}
+    header img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  transition: transform 0.3s ease-in-out;
+}
+
+header img:hover {
+  transform: scale(1.1);
+}
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+header p {
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+  border-right: 2px solid #555;
+  width: 0;
+  animation: typing 3s steps(30, end) forwards, blink 0.75s step-end infinite;
+}
+
+@keyframes blink {
+  50% {
+    border-color: transparent;
+  }
+}
   </style>
-  </body>
-  
-  </html>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+      const sections = document.querySelectorAll("section");
+
+      function revealSections() {
+        sections.forEach((section) => {
+          const sectionTop = section.getBoundingClientRect().top;
+          if (sectionTop < window.innerHeight - 50) {
+            section.classList.add("show");
+          }
+        });
+      }
+
+      window.addEventListener("scroll", revealSections);
+      revealSections();
+    });</script>
+</body>
+
+</html>
